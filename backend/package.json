@@ -1,0 +1,16 @@
+{
+  "name": "evalsphere-backend",
+  "version": "1.0.0",
+  "description": "EvalSphere Assessment Engine Backend (Express + GCC + WebAssembly SQLite)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.4",
+    "express": "^4.19.2",
+    "nodemailer": "^10.0.13",
+    "sql.js": "^1.10.3"
+  }
+}

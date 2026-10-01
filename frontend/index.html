@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EvalSphere PRO — Student Skill Assessment & Skill Evaluation Platform</title>
+  <meta name="description" content="A premium, full-stack assessment portal for evaluating conceptual engineering knowledge, coding proficiency, and analytical aptitude with real OTP authentication.">
+  
+  <!-- Premium Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- Dynamic Ambient Mesh Glow Background -->
+  <div class="bg-mesh" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+    <div class="glow-grid-overlay"></div>
+  </div>
+
+  <!-- Top Navigation Bar (Shown when authenticated) -->
+  <header class="topbar" id="appTopbar" style="display: none;">
+    <div class="topbar-inner">
+      <!-- Brand Logo -->
+      <div class="brand-group" id="brandBtn" role="button" tabindex="0" title="Return to Dashboard">
+        <div class="logo-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6 6h10"/>
+            <path d="M6 10h10"/>
+            <path d="m9 16 2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <div class="brand-name">
+            <span>Eval</span><span class="brand-highlight">Sphere</span>
+            <span class="pro-badge">PRO</span>
+          </div>
+          <span class="brand-tag">Student Assessment Portal</span>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links" id="mainNav">
+        <button class="nav-link active" id="navDashboard" onclick="navigate('dashboard')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="9" x="3" y="3" rx="1"/>
+            <rect width="7" height="5" x="14" y="3" rx="1"/>
+            <rect width="7" height="9" x="14" y="12" rx="1"/>
+            <rect width="7" height="5" x="3" y="16" rx="1"/>
+          </svg>
+          Dashboard
+        </button>
+        <button class="nav-link" id="navSubjects" onclick="navigate('subjects')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6 6h10"/>
+            <path d="M6 10h10"/>
+          </svg>
+          All Subjects
+        </button>
+        <button class="nav-link" id="navCoding" onclick="navigate('coding')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+          C Compiler Arena
+        </button>
+        <button class="nav-link" id="navSql" onclick="navigate('sql')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
+            <path d="M3 12A9 3 0 0 0 21 12"/>
+          </svg>
+          SQL Studio
+        </button>
+      </nav>
+
+      <!-- Right Action Area: Theme Toggle, Timer, Status & User Profile -->
+      <div class="topbar-right">
+        <!-- Theme Mode Switcher (Moon / Sun) -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleThemeMode()" title="Switch to Light Mode" aria-label="Toggle Dark / Light Mode">
+          <div class="theme-icon-container">
+            <!-- Sun Icon (shown in Dark Mode) -->
+            <svg class="theme-svg sun-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4.5" fill="currentColor" fill-opacity="0.15"></circle>
+              <line x1="12" y1="2" x2="12" y2="4.5"></line>
+              <line x1="12" y1="19.5" x2="12" y2="22"></line>
+              <line x1="4.93" y1="4.93" x2="6.7" y2="6.7"></line>
+              <line x1="17.3" y1="17.3" x2="19.07" y2="19.07"></line>
+              <line x1="2" y1="12" x2="4.5" y2="12"></line>
+              <line x1="19.5" y1="12" x2="22" y2="12"></line>
+              <line x1="4.93" y1="19.07" x2="6.7" y2="17.3"></line>
+              <line x1="17.3" y1="6.7" x2="19.07" y2="4.93"></line>
+            </svg>
+            <!-- Moon Icon (shown in Light Mode) -->
+            <svg class="theme-svg moon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" fill-opacity="0.18"></path>
+              <circle cx="17.5" cy="5.5" r="1" fill="currentColor" stroke="none"></circle>
+              <circle cx="19.5" cy="9.5" r="0.6" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </div>
+        </button>
+
+        <!-- Live Server Status Indicator -->
+        <div class="server-badge" id="serverStatusBadge" title="Backend Server Connectivity">
+          <span class="status-pulse"></span>
+          <span class="status-label" id="serverStatusText">Checking Server…</span>
+        </div>
+
+        <!-- Assessment Active Timer Slot -->
+        <div id="topbarTimerSlot"></div>
+
+        <!-- User Authentication Widget -->
+        <div id="authNavSlot" class="auth-slot"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport Root -->
+  <main id="appRoot" class="app-root"></main>
+
+  <!-- Floating Drago Assistant Chatbot Widget (Bottom-Right Corner) -->
+  <div class="ai-assistant-widget" id="aiAssistantWidget">
+    <!-- Floating Trigger Button (Dragon Logo Only) -->
+    <button class="ai-trigger-btn drago-trigger-btn" id="aiTriggerBtn" onclick="toggleAiAssistant()" title="Drago Assistant — Assessment & Coding Guide" aria-label="Open Drago Assistant">
+      <span class="ai-pulse-halo"></span>
+      <div class="drago-avatar-wrap">
+        <img src="drago_logo.jpg" alt="Drago Assistant" class="drago-avatar-img">
+        <span class="drago-live-status-dot"></span>
+      </div>
+    </button>
+
+    <!-- Floating Chat Window (Drago Assistant Interface) -->
+    <div class="ai-chat-window" id="aiChatWindow" style="display: none;" role="dialog" aria-label="Drago Assistant Dialog">
+      <!-- Header -->
+      <div class="ai-chat-header">
+        <div class="ai-header-profile">
+          <div class="drago-header-avatar-wrap">
+            <img src="drago_logo.jpg" alt="Drago" class="drago-header-avatar">
+          </div>
+          <div class="ai-header-text">
+            <div class="ai-title-row">
+              <span class="ai-bot-name">Drago Assistant</span>
+              <span class="ai-pro-chip">DRAGO PRO</span>
+            </div>
+            <span class="ai-bot-status">Assessment Guide • GCC Compiler • SQL Studio</span>
+          </div>
+        </div>
+        <div class="ai-header-ctrls">
+          <button class="ai-ctrl-btn" onclick="resetAiConversation()" title="Clear Chat / Restart" aria-label="Restart Conversation">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+              <path d="M21 3v5h-5"/>
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+              <path d="M8 16H3v5"/>
+            </svg>
+          </button>
+          <button class="ai-ctrl-btn" onclick="toggleAiAssistant()" title="Minimize Assistant" aria-label="Close Assistant">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Action Prompt Chips -->
+      <div class="ai-quick-chips" id="aiQuickChips">
+        <button class="ai-chip-pill" onclick="askAiPrompt('How do I attend an exam and what are the rules?')">📝 How to Attend Exam</button>
+        <button class="ai-chip-pill" onclick="askAiPrompt('How do I write and run C code in the compiler arena?')">💻 C Compiler Guide</button>
+        <button class="ai-chip-pill" onclick="askAiPrompt('How do I run SQL queries in the SQL Studio?')">⛁ SQL Studio Guide</button>
+        <button class="ai-chip-pill" onclick="askAiPrompt('Give me tips for Quantitative Aptitude challenges')">📊 Math & QA Tips</button>
+        <button class="ai-chip-pill" onclick="askAiPrompt('How does automated scoring and answer review work?')">🎯 Scoring & Review</button>
+      </div>
+
+      <!-- Messages Body -->
+      <div class="ai-chat-body" id="aiChatBody"></div>
+
+      <!-- Input Bar -->
+      <form class="ai-chat-form" id="aiChatForm" onsubmit="handleAiChatSubmit(event)">
+        <input type="text" id="aiChatInput" class="ai-chat-input" placeholder="Ask Drago how to attend, solve problems, or code…" autocomplete="off">
+        <button type="submit" class="ai-send-action-btn" id="aiSendActionBtn" title="Send Question" aria-label="Send Question">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

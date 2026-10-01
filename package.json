@@ -1,0 +1,14 @@
+{
+  "name": "evalsphere-assessment-platform",
+  "version": "1.0.0",
+  "description": "Student Assessment & Skill Evaluation Platform - Fullstack Monorepo",
+  "scripts": {
+    "start": "node backend/server.js",
+    "backend": "cd backend && npm start",
+    "install:all": "cd backend && npm install",
+    "dev": "node backend/server.js"
+  },
+  "keywords": ["assessment", "mcq", "c-programming", "sql", "quantitative-aptitude", "evaluation"],
+  "author": "",
+  "license": "ISC"
+}
