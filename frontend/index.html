@@ -78,10 +78,32 @@
           </svg>
           SQL Studio
         </button>
+        <button class="nav-link" id="navCognitive" onclick="navigate('cognitive')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/>
+            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/>
+          </svg>
+          Cognitive Load
+        </button>
       </nav>
 
-      <!-- Right Action Area: Theme Toggle, Timer, Status & User Profile -->
+      <!-- Right Action Area: Theme Toggle, Cognitive Load Badge, Timer, Status & User Profile -->
       <div class="topbar-right">
+        <!-- Live Cognitive Recognition & Load Learning System Pill / Icon -->
+        <button class="cognitive-topbar-pill tier-mid" id="topbarCognitiveBtn" onclick="openCognitiveModal()" title="Cognitive Recognition & Load Learning System — Click for Live Calibration & Deep Diagnostics" aria-label="Cognitive Load System">
+          <div class="cog-brain-icon-wrap">
+            <svg class="cog-brain-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/>
+              <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/>
+            </svg>
+            <span class="cog-pulse-dot" id="topbarCogPulse"></span>
+          </div>
+          <div class="cog-pill-info">
+            <span class="cog-pill-title">Cognitive:</span>
+            <span class="cog-pill-val" id="topbarCogVal">MID (58%)</span>
+          </div>
+        </button>
+
         <!-- Theme Mode Switcher (Moon / Sun) -->
         <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleThemeMode()" title="Switch to Light Mode" aria-label="Toggle Dark / Light Mode">
           <div class="theme-icon-container">
@@ -123,6 +145,9 @@
 
   <!-- Main Viewport Root -->
   <main id="appRoot" class="app-root"></main>
+
+  <!-- Cognitive Diagnostics & Calibration Modal Overlay -->
+  <div id="cognitiveModalRoot"></div>
 
   <!-- Floating Drago Assistant Chatbot Widget (Bottom-Right Corner) -->
   <div class="ai-assistant-widget" id="aiAssistantWidget">
@@ -171,6 +196,7 @@
 
       <!-- Quick Action Prompt Chips -->
       <div class="ai-quick-chips" id="aiQuickChips">
+        <button class="ai-chip-pill" onclick="askAiPrompt('Show my Cognitive Load and Learning System analytics')">🧠 Cognitive Load (CRLLS)</button>
         <button class="ai-chip-pill" onclick="askAiPrompt('How do I attend an exam and what are the rules?')">📝 How to Attend Exam</button>
         <button class="ai-chip-pill" onclick="askAiPrompt('How do I write and run C code in the compiler arena?')">💻 C Compiler Guide</button>
         <button class="ai-chip-pill" onclick="askAiPrompt('How do I run SQL queries in the SQL Studio?')">⛁ SQL Studio Guide</button>
