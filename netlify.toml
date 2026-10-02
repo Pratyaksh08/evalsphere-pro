@@ -6,16 +6,15 @@
   # Directory where static frontend assets are located
   publish = "frontend"
 
+# Proxy API requests to your hosted Render backend
+[[redirects]]
+  from = "/api/*"
+  to = "https://evalsphere-pro.onrender.com/api/:splat"
+  status = 200
+  force = true
+
 # SPA Fallback & Asset Handling
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Optional: Proxy API requests to your hosted backend (e.g., on Render or Railway)
-# Uncomment and replace with your live backend URL when deployed:
-# [[redirects]]
-#   from = "/api/*"
-#   to = "https://your-evalsphere-backend.onrender.com/api/:splat"
-#   status = 200
-#   force = true
