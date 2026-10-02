@@ -524,8 +524,15 @@ function renderAuthGatewayView(container) {
               <div class="otp-delivery-info" style="margin-top: 8px; font-size: 12.5px; line-height: 1.5; color: var(--text-dim);">
                 ${AppState.pendingAuthData.emailConfigured
                   ? '✅ <strong>Real Email Dispatched:</strong> Check your inbox (and Spam/Junk folder).'
-                  : '💡 <strong>Real Email Setup:</strong> Set <code>GMAIL_USER</code> & <code>GMAIL_APP_PASS</code> in <code>backend/.env</code> for live inbox delivery. (Code is also displayed in terminal console).'}
+                  : '💡 <strong>Real Email Setup:</strong> Set <code>GMAIL_USER</code> & <code>GMAIL_APP_PASS</code> in Render Environment for live inbox delivery.'}
               </div>
+              ${AppState.pendingAuthData?.devOtp ? `
+                <div style="margin-top: 10px; padding: 10px 14px; background: rgba(59, 130, 246, 0.12); border: 1px dashed rgba(59, 130, 246, 0.4); border-radius: 10px; font-size: 13px; text-align: center;">
+                  <span style="color: #94a3b8;">🔑 Verification Code:</span>
+                  <span style="font-family: monospace; font-size: 18px; font-weight: 800; letter-spacing: 3px; color: #38bdf8; margin: 0 6px;">${esc(AppState.pendingAuthData.devOtp)}</span>
+                  <button type="button" class="btn-link" style="font-size: 12px; margin-left: 6px; text-decoration: underline; color: #38bdf8;" onclick="autoFillDevOtp('${esc(AppState.pendingAuthData.devOtp)}')">⚡ Auto-fill Code</button>
+                </div>
+              ` : ''}
             </div>
           </div>
 
@@ -651,7 +658,8 @@ async function handleSendOTPSubmit(e) {
       identifier: data.identifier,
       destination: email,
       emailConfigured: data.emailConfigured,
-      realDeliveryStatus: data.realDeliveryStatus
+      realDeliveryStatus: data.realDeliveryStatus,
+      devOtp: data.devOtp
     };
 
     AppState.authStep = 2;
@@ -661,7 +669,7 @@ async function handleSendOTPSubmit(e) {
     if (data.emailConfigured) {
       showToast(`✅ Real OTP sent to ${email}! Check your inbox.`, 'success');
     } else {
-      showToast(`Verification code generated for ${email}!`, 'info');
+      showToast(`Verification code ready! Click Auto-fill or enter code below.`, 'info');
     }
   } catch (err) {
     if (btn) {
@@ -669,6 +677,18 @@ async function handleSendOTPSubmit(e) {
       btn.innerHTML = '<span>Send Verification Code 📲</span>';
     }
     showToast('Cannot connect to backend server. Make sure "npm start" is running on port 3000.', 'error');
+  }
+}
+
+function autoFillDevOtp(code) {
+  const inputs = Array.from(document.querySelectorAll('.otp-digit-box'));
+  if (inputs.length === 6 && code && code.length === 6) {
+    code.split('').forEach((digit, i) => {
+      inputs[i].value = digit;
+    });
+    inputs[5].focus();
+    const form = $('step2Form');
+    if (form) form.requestSubmit();
   }
 }
 

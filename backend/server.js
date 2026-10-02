@@ -313,6 +313,7 @@ app.post('/api/auth/send-otp', async (req, res) => {
     smsConfigured,
     emailConfigured,
     realDeliveryStatus: realDelivery,
+    devOtp: (cleanChannel === 'email' && !emailConfigured) || (cleanChannel === 'mobile' && !smsConfigured) ? otp : undefined,
     expiresInSeconds: 300
   });
 });
