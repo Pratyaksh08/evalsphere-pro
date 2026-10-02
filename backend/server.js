@@ -485,7 +485,7 @@ const C_PROBLEMS = {
     constraints: '-10^6 <= a, b <= 10^6',
     sampleIn: '3 4',
     sampleOut: '7',
-    starter: '#include <stdio.h>\n\nint main() {\n    int a, b;\n    if (scanf("%d %d", &a, &b) == 2) {\n        printf("%d\\n", a + b);\n    }\n    return 0;\n}\n',
+    starter: '#include <stdio.h>\n\nint main() {\n    int a, b;\n    // Read two integers from input and print their sum\n    \n    return 0;\n}\n',
     tests: [
       { input: '3 4\n', expected: '7' },
       { input: '-5 10\n', expected: '5' },
@@ -503,7 +503,7 @@ const C_PROBLEMS = {
     constraints: '0 <= n <= 10^9',
     sampleIn: '121',
     sampleOut: 'YES',
-    starter: '#include <stdio.h>\n\nint main() {\n    long long n, original, reversed = 0, rem;\n    if (scanf("%lld", &n) == 1) {\n        original = n;\n        while (n > 0) {\n            rem = n % 10;\n            reversed = reversed * 10 + rem;\n            n /= 10;\n        }\n        if (original == reversed) {\n            printf("YES\\n");\n        } else {\n            printf("NO\\n");\n        }\n    }\n    return 0;\n}\n',
+    starter: '#include <stdio.h>\n\nint main() {\n    long long n;\n    // Write your code to check if n is a palindrome (print YES or NO)\n    \n    return 0;\n}\n',
     tests: [
       { input: '121\n', expected: 'YES' },
       { input: '123\n', expected: 'NO' },
@@ -521,7 +521,7 @@ const C_PROBLEMS = {
     constraints: '1 <= N <= 100, -1000 <= element <= 1000',
     sampleIn: '5\n12 45 2 99 31',
     sampleOut: '99',
-    starter: '#include <stdio.h>\n\nint main() {\n    int n;\n    if (scanf("%d", &n) == 1 && n > 0) {\n        int maxVal, x;\n        scanf("%d", &maxVal);\n        for (int i = 1; i < n; i++) {\n            scanf("%d", &x);\n            if (x > maxVal) maxVal = x;\n        }\n        printf("%d\\n", maxVal);\n    }\n    return 0;\n}\n',
+    starter: '#include <stdio.h>\n\nint main() {\n    int n;\n    // Read n followed by n integers and print the maximum value\n    \n    return 0;\n}\n',
     tests: [
       { input: '5\n12 45 2 99 31\n', expected: '99' },
       { input: '3\n-10 -5 -20\n', expected: '-5' },
@@ -538,7 +538,7 @@ const C_PROBLEMS = {
     constraints: '0 <= N <= 15',
     sampleIn: '5',
     sampleOut: '120',
-    starter: '#include <stdio.h>\n\nint main() {\n    int n;\n    if (scanf("%d", &n) == 1) {\n        long long fact = 1;\n        for (int i = 1; i <= n; i++) {\n            fact *= i;\n        }\n        printf("%lld\\n", fact);\n    }\n    return 0;\n}\n',
+    starter: '#include <stdio.h>\n\nint main() {\n    int n;\n    // Read non-negative integer n and print n!\n    \n    return 0;\n}\n',
     tests: [
       { input: '5\n', expected: '120' },
       { input: '0\n', expected: '1' },
@@ -566,7 +566,7 @@ const SQL_PROBLEMS = {
         [6, 'Arjun', 'CSE', 80]
       ]
     },
-    starter: '-- Retrieve name and marks for students with marks > 80\nSELECT name, marks\nFROM students\nWHERE marks > 80\nORDER BY marks DESC;',
+    starter: '-- Write SQL query to retrieve name and marks for marks > 80 ordered by marks DESC\nSELECT \n',
     expected: 'SELECT name, marks FROM students WHERE marks > 80 ORDER BY marks DESC;',
     datasets: [
       "INSERT INTO students VALUES (1,'Asha','CSE',92),(2,'Ravi','ECE',78),(3,'Meena','CSE',85),(4,'Karan','MECH',64),(5,'Divya','ECE',81),(6,'Arjun','CSE',80);",
@@ -588,7 +588,7 @@ const SQL_PROBLEMS = {
         [105, 'Kavya', 'Sales', 55000]
       ]
     },
-    starter: '-- Calculate average salary per department\nSELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department\nORDER BY department;',
+    starter: '-- Write SQL query to calculate average salary (alias: avg_salary) per department\nSELECT \n',
     expected: 'SELECT department, AVG(salary) AS avg_salary FROM employees GROUP BY department ORDER BY department;',
     datasets: [
       "INSERT INTO employees VALUES (101,'Aditi','Engineering',85000),(102,'Rohan','Engineering',95000),(103,'Sanya','Marketing',60000),(104,'Vikram','Marketing',70000),(105,'Kavya','Sales',55000);",
@@ -611,7 +611,7 @@ const SQL_PROBLEMS = {
         [6, 'Arjun', 'CSE', 80]
       ]
     },
-    starter: '-- Count number of students per department\nSELECT department, COUNT(*) AS student_count\nFROM students\nGROUP BY department\nORDER BY student_count DESC;',
+    starter: '-- Write SQL query to count students (alias: student_count) per department ordered by count DESC\nSELECT \n',
     expected: 'SELECT department, COUNT(*) AS student_count FROM students GROUP BY department ORDER BY student_count DESC;',
     datasets: [
       "INSERT INTO students VALUES (1,'Asha','CSE',92),(2,'Ravi','ECE',78),(3,'Meena','CSE',85),(4,'Karan','MECH',64),(5,'Divya','ECE',81),(6,'Arjun','CSE',80);",
